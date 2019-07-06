@@ -56,10 +56,6 @@ class AspectJPlugin implements Plugin<Project> {
                     ajInpath = project.configurations.findByName(namingConventions.getAspectInpathConfigurationName(projectSourceSet))
                 }
 
-                project.tasks[aspectTaskName].setDependsOn(project.tasks[javaTaskName].dependsOn)
-                project.tasks[aspectTaskName].dependsOn(project.tasks[aspectTaskName].aspectpath)
-                project.tasks[aspectTaskName].dependsOn(project.tasks[aspectTaskName].ajInpath)
-                project.tasks[javaTaskName].deleteAllActions()
                 project.tasks[javaTaskName].dependsOn(project.tasks[aspectTaskName])
             }
         }
